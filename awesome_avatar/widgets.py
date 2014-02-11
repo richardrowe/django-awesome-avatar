@@ -50,7 +50,9 @@ class AvatarWidget(FileInput):
         if type(value) != dict:
             context['avatar_url'] = value.url if value else '/static/awesome_avatar/default.png'
         else:
-            context['avatar_url'] = '/static/awesome_avatar/default.png'ontext['id'] = attrs.get('id', 'id_' + name)
+            context['avatar_url'] = '/static/awesome_avatar/default.png'
+
+        context['id'] = attrs.get('id', 'id_' + name)
 
         # todo fix HACK
         context['STATIC_URL'] = settings.STATIC_URL
