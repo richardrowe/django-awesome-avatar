@@ -39,10 +39,9 @@ class AvatarField(models.ImageField):
         return super(AvatarField, self).formfield(**defaults)
 
     def save_form_data(self, instance, data):
-        # if data and self.width and self.height:
-        file_ = data['file']
-        if file_:
-
+        if data and self.width and self.height:
+          file_ = data['file']
+          if file_:
             image = Image.open(StringIO(file_.read()))
             image = image.crop(data['box'])
             image = image.resize((self.width, self.height), Image.ANTIALIAS)
